@@ -15,12 +15,15 @@ class SimulationGenerator:
                 if all_noisy:
                     w = World(*world, agents=num_agents, color='noise', noisy=True, view_size=view)
                 else:
-                    w = random.choice([
-                        World(*world, agents=num_agents, noisy=True, view_size=view),
-                        World(*world, agents=num_agents, color='noise', view_size=view),
-                        World(*world, agents=num_agents, view_size=view),
-                        World(*world, agents=num_agents, color='noise', noisy=True, view_size=view)
-                    ])
+                    p = random.choice([0, 1, 2, 3])
+                    if p == 0:
+                        w = World(*world, agents=num_agents, noisy=True, view_size=view)
+                    elif p == 1:
+                        w = World(*world, agents=num_agents, color='noise', view_size=view)
+                    elif p == 2:
+                        w = World(*world, agents=num_agents, view_size=view)
+                    elif p == 3:
+                        w = World(*world, agents=num_agents, color='noise', noisy=True, view_size=view)
 
                 x = []
                 y = []
