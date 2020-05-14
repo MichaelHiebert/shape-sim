@@ -13,13 +13,13 @@ class SimulationGenerator:
             for vid in range(vids_in_batch):
                 # set up world
                 if all_noisy:
-                    w = World(*world, agents=400, color='noise', noisy=True)
+                    w = World(*world, agents=num_agents, color='noise', noisy=True, view_size=view)
                 else:
                     w = random.choice([
-                        World(*world, agents=num_agents, noisy=True),
-                        World(*world, agents=400, color='noise'),
-                        World(*world, agents=400),
-                        World(*world, agents=400, color='noise', noisy=True)
+                        World(*world, agents=num_agents, noisy=True, view_size=view),
+                        World(*world, agents=num_agents, color='noise', view_size=view),
+                        World(*world, agents=num_agents, view_size=view),
+                        World(*world, agents=num_agents, color='noise', noisy=True, view_size=view)
                     ])
 
                 x = []
