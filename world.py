@@ -202,7 +202,7 @@ class View:
             self.tlx = 0
             self.brx = width
 
-        if self.brx >= self.world.width:
+        if self.brx > self.world.width:
             self.brx = self.world.width - 1
             self.tlx = self.world.width - 1 - width
 
@@ -210,7 +210,7 @@ class View:
             self.tly = 0
             self.bry = height
 
-        if self.bry >= self.world.height:
+        if self.bry > self.world.height:
             self.bry = self.world.height - 1
             self.tly = self.world.height - 1 - height
 

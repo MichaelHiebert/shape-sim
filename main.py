@@ -30,13 +30,6 @@ if __name__ == "__main__":
     #     cv2.waitKey(0)
     #     w.update()
 
-    sg = SimulationGenerator()
-    x,y = next(sg.generate(1, 15, (32,32), 3))
-    img = np.zeros((400, 1202, 3), np.uint8)
-    for i in range(x.shape[1]):
-        img[:, :400, :] = x[0,i,:,:,:]
-        img[:, 401:801, :] = x[1,i,:,:,:]
-        img[:, 802:, :] = x[2,i,:,:,:]
-
-        cv2.imshow('word', img)
-        cv2.waitKey(0)
+    i = 0
+    for j in SimulationGenerator().generate(50, 20, (28,28), vids_in_batch=3, world=(200,200), view=(200,200), num_agents=35):
+        i += 1
