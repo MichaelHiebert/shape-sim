@@ -4,7 +4,7 @@ import random
 from shapes import generate_circle_agent,generate_static_circle_agent,generate_big_static_circle
 
 class World:
-    def __init__(self, width, height, cur_view=None, agents=None, color=None, noisy=False):
+    def __init__(self, width, height, cur_view=None, agents=None, color=None, noisy=False, view_size=(400,400)):
         """
             width :: int :
                 the width (in pixels) of this world
@@ -28,7 +28,7 @@ class World:
         if cur_view is not None:
             self.view = cur_view
         else:
-            self.view = self._generate_view()
+            self.view = self._generate_view(size=view_size)
 
         self.agents = self._handle_agents(agents, noisy)
 
