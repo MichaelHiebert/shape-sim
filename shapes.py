@@ -15,7 +15,8 @@ class CircleAgent(VisualAgent):
     def _generate_noise(self):
         radius = self.radius
         z = np.zeros((2*radius, 2*radius, 3))
-        n = np.zeros((2*radius, 2*radius, 3))
+        # n = np.random.randint(256, size=(2*radius,2*radius,3), dtype=np.uint8)
+        n = np.random.default_rng().integers(255, size=(2*radius, 2*radius, 3), dtype=np.uint8)
 
         z = cv2.circle(z, (radius,radius), radius, (1,1,1), -1)
 
@@ -37,12 +38,13 @@ class CircleAgent(VisualAgent):
             r = self.radius
             h,w,_ = self.noise.shape
             height,width,_ = image.shape
-            
-            for y in range(h):
-                for x in range(w):
-                    if tuple(self.noise[y,x,:]) != (0,0,0):
-                        if cy - r + y in range(height) and cx - r + x - 1 in range(width):
-                            image[cy - r + y, cx - r + x - 1, :] = self.noise[y,x,:]
+
+            noise_mask = np.zeros(self.noise.shape)
+            noise_mask[np.nonzero(self.noise)] = 1
+
+            sub = image[cy-r:cy+r,cx-r:cx+r,:]
+
+            image[cy-r:cy+r,cx-r:cx+r,:] = sub - np.multiply(sub, noise_mask[:sub.shape[0], :sub.shape[1], :]) + self.noise[:sub.shape[0], :sub.shape[1], :]
             
             return image
         else:

@@ -82,13 +82,8 @@ class World:
         return world
 
     def _generate_noise(self):
-        world = np.zeros((self.height,self.width,3), np.uint8)
-
-        for y in range(self.height):
-            for x in range(self.width):
-                world[y,x,:] = self._random_color()
-
-        return world
+        # return np.random.randint(256, size=(self.height,self.width,3), dtype=np.uint8)
+        return np.random.default_rng().integers(255, size=(self.height,self.width, 3), dtype=np.uint8)
 
     def _random_color(self):
         return (np.random.randint(256), np.random.randint(256), np.random.randint(256))
