@@ -37,8 +37,8 @@ class SimulationGenerator:
                 batch_x.append(x)
                 batch_y.append(y)
 
-        batch_x = np.array(batch_x)
-        batch_y = np.array(batch_y)
+            batch_x = np.array(batch_x)
+            batch_y = np.array(batch_y)
 
-        yield batch_x, batch_y
+            yield batch_x, batch_y
             
