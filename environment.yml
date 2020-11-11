@@ -1,0 +1,7 @@
+name: shape-sim
+dependencies:
+  - python=3.7.4
+  - numpy=1.17.4
+  - pip=20.2.4
+  - pip:
+    - opencv-python==4.1.2.30

@@ -98,7 +98,7 @@ class Agent:
 
         return not (v_x == 0 and v_y == 0 and a_x == 0 and a_y == 0)
 
-    def get_sector(self, view, height, width): # TODO will probably need some fancy somethin idk
+    def get_sector(self, view, height, width): # TODO does not support occlusion currently???
         """
             Given a height and a width, returns a tuple:
                 (int((float(self.y) / float(self.height)) * height), 

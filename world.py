@@ -1,7 +1,7 @@
 import numpy as np
 import math
 import random
-from shapes import generate_circle_agent,generate_static_circle_agent,generate_big_static_circle
+from shapes import generate_circle_agent,generate_static_circle_agent,generate_big_static_circle, generate_rectangle_agent, generate_static_rectangle_agent
 
 class World:
     def __init__(self, width, height, cur_view=None, agents=None, color=None, noisy=False, view_size=(400,400)):
@@ -125,8 +125,18 @@ class World:
                 generate_circle_agent,
                 generate_circle_agent,
                 generate_circle_agent,
-                # generate_static_circle_agent,
-                # generate_big_static_circle,
+                generate_circle_agent,
+                generate_circle_agent,
+                generate_static_circle_agent,
+                generate_static_circle_agent,
+                generate_big_static_circle,
+                generate_rectangle_agent,
+                generate_rectangle_agent,
+                generate_rectangle_agent,
+                generate_rectangle_agent,
+                generate_rectangle_agent,
+                generate_static_rectangle_agent,
+                generate_static_rectangle_agent,
             ])(self, True)
         else:
             return random.choice([
